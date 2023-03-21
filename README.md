@@ -20,7 +20,7 @@ A Front-end/UI that displays content delivered by our API using modern techonolo
 
 ## <p align="center"> The Pitch: </p>
 
-<p align="center"> Insert Pitchdeck here </p>
+<p align="center"> In the repository </p>
 
 ## <p align="center"> Deep Dive Slides: </p>
 
