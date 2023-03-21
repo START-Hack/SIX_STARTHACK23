@@ -37,5 +37,6 @@ Creativity Ability for non-financial users to interact with the prototype Design
 ## <p align="center"> Prize - the winning team members will each receive: </p>
 
 ### The winning team will get a 200 CHF voucher per person. 
+
 CEO pitch 
 A visit to the Zurich Finanz Museum
