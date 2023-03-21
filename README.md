@@ -34,7 +34,7 @@ Creativity Ability for non-financial users to interact with the prototype Design
 
 <p align="center"> Thibaut Rouquette will be glad to answer your questions during the Deep Dive. He’ll also be available on Discord. </p>
 
-<img width="1087" alt="Screenshot 2022-03-22 at 14 04 23" src="https://user-images.githubusercontent.com/120366987/226604331-7397fe95-586d-4230-9c5e-8323b0895861.png">
+<img width="1087" alt="Screenshot 2022-03-22 at 14 04 23" src="https://user-images.githubusercontent.com/120366987/226604652-94f19910-2fa4-4a1f-a7e2-01c0d93ee40d.png">
 
 ## <p align="center"> Prize - the winning team members will each receive: </p>
 
