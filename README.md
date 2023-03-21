@@ -12,8 +12,10 @@ You can access our API Portal https://bfi-mvp-portal.six-group.com/portal/bfi/
 
 *Expected Outcome*, a Front-end/UI that displays content delivered by our API using modern techonologies. Ideally a working prototype is expected but a mock up is also acceptable.
 
-# Price
-The winning team will get a 200 CHF voucher per person. CEO pitch A visit to the Zurich Finanz Museum
+# Prize
+The winning team will get a 200 CHF voucher per person. 
+CEO pitch 
+A visit to the Zurich Finanz Museum
 
 # Assessment criteria
 Creativity Ability for non-financial users to interact with the prototype Design
