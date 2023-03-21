@@ -28,17 +28,18 @@ A Front-end/UI that displays content delivered by our API using modern techonolo
 
 ## <p align="center"> Judging Criteria: </p>
 
-Creativity Ability for non-financial users to interact with the prototype Design
+You will be judged on you Creativity, on the Ability for non-financial users to interact with the prototype and on your Design.
 
 ## <p align="center"> Point of Contact: </p>
 
-<p align="center"> Thibaut Rouquette will be glad to answer your questions during the Deep Dive. He’ll also be available on Discord. </p>
+<p align="center"> Laurent Lefevre and Catalina Vazquez will be glad to answer your questions during the Deep Dive. </p>
 
-<img width="1087" alt="Screenshot 2022-03-22 at 14 04 23" src="https://user-images.githubusercontent.com/120366987/226604652-94f19910-2fa4-4a1f-a7e2-01c0d93ee40d.png">
+<p align="center"> David De Lame (Product Manager), Lukas Maag (Business Analyst), Manuel Niederberger (Business Analyst) and Davide Angelocola (Tech Lead) will also be available for your questions (Thursday on site)</p>
+
 
 ## <p align="center"> Prize - the winning team members will each receive: </p>
 
-### The winning team will get a 200 CHF voucher per person. 
-
-CEO pitch 
-A visit to the Zurich Finanz Museum
+### The winning team will get a set of prizes incliuding:
+### a 200 CHF voucher per person 
+### + an invitation in the Swiss Stock Exchange for a CEO pitch 
+### + a visit to the Swiss Finance Museum
