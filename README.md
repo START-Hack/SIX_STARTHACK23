@@ -32,7 +32,9 @@ Creativity Ability for non-financial users to interact with the prototype Design
 
 ## <p align="center"> Point of Contact: </p>
 
-<p align="center"> Name, Name, or Name will be glad to answer your questions during the Deep Dive. We’ll also be available on Discord. </p>
+<p align="center"> Thibaut Rouquette will be glad to answer your questions during the Deep Dive. He’ll also be available on Discord. </p>
+
+<img width="1087" alt="Screenshot 2022-03-22 at 14 04 23" src="https://user-images.githubusercontent.com/120366987/226604331-7397fe95-586d-4230-9c5e-8323b0895861.png">
 
 ## <p align="center"> Prize - the winning team members will each receive: </p>
 
