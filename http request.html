@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HTTP Demo</title>
+</head>
+<body style="margin: 35px">
+<h1>SIX API Demo</h1>
+
+<h2>Search</h2>
+<label for="search-criteria">Search query </label><input id="search-criteria" type="text" placeholder="Type a company name (e.g. apple)" style="width:250px">
+<button onclick="searchRequest()">Search</button>
+<br>
+<div id="search-response" style="width:80%; height: 300px; background: #eee; overflow:scroll; margin-top: 10px"></div>
+<br>
+
+<h2>Instrument Summary</h2>
+<label for="scheme">Scheme </label><select id="scheme" type="text">
+  <option value="TICKER_BC">TICKER_BC</option>
+  <option value="VALOR">VALOR</option>
+  <option value="ISIN">ISIN</option>
+  <option value="SEDOL">SEDOL</option>
+  <option value="CUSIP">CUSIP</option>
+</select>
+<label for="identifier">Identifier </label><input id="identifier" type="text" placeholder="identifier" style="width:80px">
+<button onclick="instrumentRequest()">Instrument summary</button>
+<br>
+<div id="instrument-response" style="width:80%; height: 300px; background: #eee; overflow:scroll; margin-top: 10px"></div>
+<br>
+
+<h2>End of Day time series</h2>
+<label for="eodscheme">Scheme </label><select id="eodscheme" type="text"">
+  <option value="TICKER_BC">TICKER_BC</option>
+  <option value="VALOR_BC">VALOR_BC</option>
+  <option value="ISIN_BC">ISIN_BC</option>
+  <option value="SEDOL_BC">SEDOL_BC</option>
+  <option value="CUSIP_BC">CUSIP_BC</option>
+</select>
+<label for="eodidentifier">Identifier </label><input id="eodidentifier" type="text" placeholder="identifier" style="width:80px">
+<label for="eodfrom">From </label><input id="eodfrom" type="text" value="2023-01-01" style="width:80px">
+<label for="eodto">To </label><input id="eodto" type="text" value="2023-03-01" style="width:80px">
+<button onclick="eodRequest()">End of Day Timeseries</button>
+<br>
+<div id="eod-response" style="width:80%; height: 300px; background: #eee; overflow:scroll; margin-top: 10px"></div>
+<br>
+
+<h2>Market Data</h2>
+<label for="mdscheme">Scheme </label><select id="mdscheme" type="text"">
+  <option value="TICKER_BC">TICKER_BC</option>
+  <option value="VALOR_BC">VALOR_BC</option>
+  <option value="ISIN_BC">ISIN_BC</option>
+  <option value="SEDOL_BC">SEDOL_BC</option>
+  <option value="CUSIP_BC">CUSIP_BC</option>
+</select>
+<label for="mdidentifier">Identifier </label><input id="mdidentifier" type="text" placeholder="identifier" style="width:80px">
+<button onclick="stream()">Stream</button> 
+<button onclick="closeStream()">Close stream</button>
+<br>
+<div id="md-response" style="width:80%; height: 300px; background: #eee; overflow:scroll; margin-top: 10px"></div>
+<br>
+
+<script> 
+    let uri = 'wss://market-stream-fi-api-dev.ingress.nap01.ocp.six-group.net/api/v1/websocket';
+    let counter = 0;
+    let streamId = '';
+
+    function displayQuery(uri, el){
+        fetch (uri, {
+            method: "GET",
+            mode: "cors",
+            cache: "no-cache",
+            credentials: "same-origin",
+            headers: {
+            "api-version": "2023-01-01",
+            "Accept-Encoding": "gzip",
+            "Accept": "application/json"
+            }
+        })
+        .then((response) => response.json())
+        .then((data) => {
+            el.innerHTML = "<pre>" + JSON.stringify(data.data, null, 2) + "</pre>";
+            updateIdentifiers(data);
+        }); 
+    }
+    
+    function updateIdentifiers(obj) {
+      console.log("update identifier", obj);
+      if ('searchInstruments' in obj.data) {
+        let instrument = obj.data.searchInstruments[0].hit;
+        let ticker_bc = instrument.mostLiquidListing.ticker + "_" + instrument.mostLiquidMarket.bc;
+        console.log("ticker_bc : ", ticker_bc);
+        
+        document.getElementById("scheme").value = "TICKER_BC";
+        document.getElementById("identifier").value  = ticker_bc;
+        
+        document.getElementById("eodscheme").value = "TICKER_BC";
+        document.getElementById("eodidentifier").value  = ticker_bc;
+        
+        document.getElementById("mdscheme").value = "TICKER_BC";
+        document.getElementById("mdidentifier").value  = ticker_bc;
+      }
+    }
+
+    function searchRequest(){
+        let el = document.getElementById("search-response");
+        const uri = "https://web.api.six-group.com/api/findata/v1/searchInstruments?query=" + encodeURI(document.getElementById("search-criteria").value)
+        
+        displayQuery(uri, el);
+    }
+    
+    function instrumentRequest(){
+        let el = document.getElementById("instrument-response");
+        const uri = "https://web.api.six-group.com/api/findata/v1/instruments/referenceData/instrumentSummary?scheme=" + document.getElementById("scheme").value + "&ids=" + encodeURI(document.getElementById("identifier").value)
+        
+        displayQuery(uri, el);
+    }
+
+    function eodRequest(){
+        let el = document.getElementById("eod-response");
+        let uri = "https://web.api.six-group.com/api/findata/v1/listings/marketData/eodTimeseries?scheme=" + document.getElementById("scheme").value + "&ids=" + encodeURI(document.getElementById("identifier").value) + 
+            "&from=" + encodeURI(document.getElementById("eodfrom").value)
+
+        if(encodeURI(document.getElementById("eodto").value)) {
+          uri += "&to=" + encodeURI(document.getElementById("eodto").value)
+        }
+        
+        displayQuery(uri, el);
+    }
+
+    function stream(){
+        streamId = "stream" + counter++;
+        let el = document.getElementById("md-response");
+        let uri = 'wss://web.api.six-group.com/api/findata/v1/websocket';
+        webSocket = new WebSocket(uri);
+        webSocket.onmessage = function (message) {
+            const msg = JSON.parse(message.data);
+            el.innerHTML = "<pre>" + JSON.stringify(msg, null, 2) + "</pre>";
+        };
+
+        webSocket.onopen = function () {
+            let gqlQuery = `subscription { startStream(streamId: "` + streamId + `"scheme: TICKER_BC ids: ["` + document.getElementById("mdidentifier").value + `"]) { type requestedId requestedScheme qualityOfService
+  last { value timestamp size }
+  high { value timestamp }
+  low { value timestamp }
+  bestBid { value timestamp }
+  bestAsk { value timestamp }
+  orderBook { position side size value timestamp }
+}}`
+         
+            console.log("connection opened");
+            const msgToSend = JSON.stringify({query: gqlQuery});
+            webSocket.send(msgToSend);
+        };
+
+        webSocket.onclose = function (event) {
+            console.log("connection closed: " + JSON.stringify(event));
+        };
+
+        webSocket.onerror = function (event) {
+            console.log("error: " + JSON.stringify(event));
+        };
+
+        window.onclose = function () {
+            webSocket.close();
+        }
+    }
+    
+    function closeStream() {
+        let gqlQuery = `mutation { closeStream(streamId: "` + streamId + `") { type requestedId requestedScheme} }`;        
+        const msgToSend = JSON.stringify({query: gqlQuery});
+        webSocket.send(msgToSend);      
+    }
+
+
+</script>
+
+</body></html>
