@@ -30,7 +30,7 @@ A Front-end/UI that displays content delivered by our API using modern techonolo
 
 ## <p align="center"> DATA PASSWORT PROTECTION: </p>
 
-<p align="center"> The passwort for the .zip file is: "hackaton2023". </p>
+<p align="center"> The passwort for the .zip file is: "##hackaton2023". </p>
 
 ## <p align="center"> Judging Criteria: </p>
 
