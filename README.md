@@ -28,6 +28,10 @@ A Front-end/UI that displays content delivered by our API using modern techonolo
 
 <p align="center"> The deep dive will be held without a presentation. </p>
 
+## <p align="center"> DATA PASSWORT PROTECTION: </p>
+
+<p align="center"> The passwort for the .zip file is: "hackaton2023". </p>
+
 ## <p align="center"> Judging Criteria: </p>
 
 - We want you to define what inclusion in financial services means to you. The greater reach of your solution the better.
