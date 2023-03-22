@@ -1,0 +1,594 @@
+<!--
+ *  Copyright (c) 2019 GraphQL Contributors
+ *  All rights reserved.
+ *
+ *  This source code is licensed under the license found in the
+ *  LICENSE file in the root directory of this source tree.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>API - GraphQL</title>
+
+    <style>
+        body {
+            height: 100%;
+            margin: 0;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        #graphiql {
+            height: 100vh;
+        }
+
+        .tooltip {
+            position: relative;
+            display: inline-block;
+        }
+
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 80px;
+            background-color: #555;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px 0;
+            position: absolute;
+            z-index: 999;
+            bottom: -100%;
+            left: 50%;
+            margin-left: -40px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 12px;
+        }
+
+        .tooltip .tooltiptext::after {
+            content: "";
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: transparent transparent #555 transparent;
+        }
+
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
+
+    <!--
+      This GraphiQL example depends on Promise and fetch, which are available in
+      modern browsers, but can be "polyfilled" for older browsers.
+      GraphiQL itself depends on React DOM.
+      If you do not want to rely on a CDN, you can host these files locally or
+      include them directly in your favored resource bundler.
+    -->
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+
+    <link rel="stylesheet" href="https://unpkg.com/graphiql@1.3.2/graphiql.min.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/codemirror@5.59.2/theme/idea.css"/>
+</head>
+<body>
+<div id="graphiql">Loading...</div>
+<script crossorigin src="https://unpkg.com/graphiql@1.3.2/graphiql.min.js" type="application/javascript"></script>
+<script>
+    let url = 'https://web.api.six-group.com/api/findata/v1/graphql';
+    let widgetCollector = [];
+
+    let apiVersion = buildText("userId", "2022-01-01", 11, widgetCollector);
+
+    function graphQLFetcher(graphQLParams) {
+        let headers = {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'api-version': apiVersion.value
+        };
+
+        return fetch(url, {
+            method: 'post',
+            headers: headers,
+            body: JSON.stringify(graphQLParams),
+        }).then(function (response) {
+            return response.json().catch(function () {
+                return response.text();
+            });
+        });
+    }
+
+    // Render <GraphiQL /> into the body.
+    // See the README.md in the top level of this module to learn more about
+    // how you can customize GraphiQL by providing different values or
+    // additional child elements.
+    ReactDOM.render(
+        React.createElement(GraphiQL, {
+            editorTheme: 'idea',
+            fetcher: graphQLFetcher,
+            defaultVariableEditorOpen: false,
+            query:
+                `#
+# productive endpoints
+#
+query InstrumentSummaryAndSymbology {
+  instruments(
+    scheme: ISIN
+    ids: ["CH0009980894", "IE00B5BMR087", "CH0559601544", "US0378331005", "JE00B1VS3770", "US037833AK68", "XXXXX"]
+  ) {
+    requestedId
+    requestedScheme
+    lookupStatus
+    lookup {
+      instrumentName
+      instrumentStatus
+      instrumentType
+    }
+    referenceData {
+      instrumentSymbology {
+        valor
+        isin
+        cusip
+        cins
+        sedol
+        wkn
+        commonCode
+        figiShareClass
+        figi
+        austrianNumber
+        belgianNumber
+        danishNumber
+        rga
+        euroclearFrance
+        hongKongIssueNumber
+        italianNumber
+        japaneseNumberTse
+        japaneseNumberSicc
+        dutchNumber
+        norwegianNumber
+        portugueseNumber
+        swedishNumber
+      }
+      instrumentSummary {
+        sixLongName
+        productName
+        fisn
+        fisnSIX
+        issuer {
+          name
+          gk
+          domicile
+          sector
+        }
+        originalIssuer {
+          name
+          gk
+          domicile
+          sector
+        }
+        newInstruments {
+          name
+          valor
+          isin
+        }
+        cfi
+        cfiSIX
+        eusipaCode
+        contractSymbol
+        mostLiquidMarket {
+          name
+          bc
+          mic
+        }
+        marketAffiliation
+        legalForm
+        unit
+        nominal
+        nominalCurrency
+        repaymentsInOtherCurrencies
+        exchangeable
+        seniority
+        inflationProtected
+        openingDate
+        deletionDate
+        deletionReason
+        monitoringRestriction
+        investorInfoCode
+        smallestDenomination
+        nominalReduction
+        certificate
+        certificateType
+        combinedSecurity
+        insuranceLinked
+        sixBorrowerCategory
+        issuedAmount
+        outstandingAmount
+        issuePrice
+        issueDate
+        partlyPaidIssue
+        partlyPaid
+        datedDate
+        firstCouponDate
+        dayCountBasis
+        dayCountBasisLabel
+        couponCapitalization
+        delayedInterestPayment {
+          delayInMonths
+          paymentDay
+        }
+        businessDayConvention
+        couponPeriodAdjustment
+        currentCouponRate
+        currentCouponType
+        couponPaymentFrequency
+        couponPaymentFrequencyTimeUnit
+        irregularFirstCoupon
+        irregularLastCoupon
+        conversionOrExercisePeriodFrom
+        conversionOrExercisePeriodUntil
+        optionType
+        strikePrice
+        strikePriceCurrency
+        exerciseType
+        redemptionRatio
+        redemptionPriceCurrency
+        amortization
+        extensionByIssuer
+        extensionByHolder
+        callable
+        puttable
+        conversionByHolder
+        conversionByIssuer
+        derivativeExpiryDate
+        derivativeExpiryTime
+        finalMaturityDate
+        expiration
+        earningsWholeTermType
+        incomeType
+        distributionsInOtherCurrencies
+        dividendPolicy
+        equityType
+        sixFundType
+        icmaRegulated
+        underlyingInstrument {
+          name
+          valor
+          isin
+        }
+        mainUnderlyingAssetClass
+      }
+    }
+  }
+}
+
+query InstitutionSummaryByInstrument {
+  instruments(scheme: ISIN, ids: ["US0378331005", "IT0000062072", "XXXXX"]) {
+    requestedId
+    requestedScheme
+    lookupStatus
+    referenceData {
+      institutionSummary {
+        nameMainLanguage
+        mainLanguage
+        deletionDate
+        reasonForDeletion
+        legalAddress {
+          place
+          domicile
+          postalCode
+          state
+          streetAndHouseNumber
+          url
+        }
+        headofficeAddress {
+          place
+          domicile
+          postalCode
+          state
+          streetAndHouseNumber
+          url
+        }
+        banqueDeFranceCode
+        isBisCentralBankOrMonetaryAuthority
+        ebaSectorCode
+        fitchMarketSector
+        gicsSectorCode
+        industryClassificationBenchmark
+        mfiBranchType
+        mfiSectorType
+        naceSectorCode
+        nafSectorCode
+        orbofSectorCode
+        sixProtide
+        sixSectorCode
+        standardIndustrialClassification
+        balanceSheetCurrency
+        disolutionDate
+        endOfCurrentFinancialYear
+        endOfLastFinancialYear
+        furtherClause
+        investmentFundGuideline
+        legalForm
+        legalFormPeculiarity
+        mifidiiInvestmentFirm
+        centralCounterpartyType
+        centralSecuritiesDepositoryType
+        centralCounterpartyTypeValidFrom
+        centralSecuritiesDepositoryTypeValidFrom
+      }
+    }
+  }
+}
+
+query EODTimeseries {
+  listings(scheme: TICKER_BC, ids: ["ABBN_4"]) {
+    requestedId
+    requestedScheme
+    lookupStatus
+    lookup {
+      listingName
+      marketName
+      listingCurrency
+      listingStatus
+    }
+    marketData {
+        eodTimeseries(filters: {from: "2022-11-01"}) {
+          sessionDate
+          open
+          close
+          low
+          high
+          volume
+          yieldToMaturity
+          turnover
+          netAssetValue
+          settlementPrice
+          openInterest
+          vwap
+        }
+     }
+  }
+}
+
+query MarketReferenceDataExample {
+  markets(scheme: BC, ids: ["4", "257", "0", "1", "14", "67"]) {
+    requestedId
+    requestedScheme
+    lookupStatus
+    lookup {
+      marketName
+      marketStatus
+      marketType
+    }
+    referenceData {
+        marketSymbology {
+          bc
+          mic
+          micType
+        }
+        marketSummary {
+          marketSessions {
+            day
+            span {
+              open
+              close
+            }
+          }
+          timeZone
+          classifications
+          marketLongName
+          domiciledInEEA
+          domicile
+          place
+          stateDistrict
+          postalCode
+          streetAndHouseNumber
+          url
+          approvalProductCategories {
+            approvalDate
+            approvingAuthority
+            productCategories
+          }
+        }
+    }
+  }
+}
+
+#
+# Search examples
+#
+query FullTextSearchExampleInstrument {
+  searchInstruments(
+    query: "apple"
+  ) {
+    hit {
+      valor
+      instrumentType
+      name
+      issuer {
+        gk
+        name
+        domicile
+        sector
+      }
+      mostLiquidMarket {
+        bc
+        mic
+      }
+    }
+    normalizedScore
+    highlights {
+      description
+    }
+  }
+}
+
+query FullTextSearchExampleInstitution {
+  searchInstitutions(query: "apple", size: 3, preferredLanguage: EN) {
+    hit {
+      name
+      gk
+      type
+      domicile
+    }
+    normalizedScore
+    highlights {
+      description
+    }
+  }
+}
+
+query FullTextSearchExampleMarket {
+  searchMarkets(query: "nasdaq", size: 3, preferredLanguage: EN) {
+    hit {
+      name
+      bc
+      type
+    }
+    normalizedScore
+    highlights {
+      description
+    }
+  }
+}
+
+#
+# InstitutionSummary
+#
+query InstitutionsSummaryByLEIExample {
+  institutions(scheme: LEI, ids: ["HWUPKR0MPOU8FGXBT394", "XXXXXXXXXXX"]) {
+    requestedId
+    requestedScheme
+    lookupStatus
+    lookup {
+      institutionName
+      institutionType
+      institutionStatus
+    }
+    referenceData {
+      institutionSymbology {
+        gk
+        lei
+        leiStatus
+        leiValidFrom
+        aifEsmaId
+        austrianNumberOenbIdent
+        bankClearingCode
+        bankIdentifierCode
+        belgianEnterpriseNumber
+        belgianVATNumber
+        codeEuroclear
+        danishCVRNumber
+        dunsNumber
+        enterpriseIdentificationNumber
+        esmaId
+        financialServicesFirm
+        fitchIssuerId
+        frenchRegisterNumber
+        globalIntermediaryIdentificationNumber
+        guernseyCompanyNumber
+        irishCompanyNumber
+        isleOfManCompanyNumber
+        italianIssuerIdentificationBancaItalia
+        jerseyCompanyNumber
+        moodyInstitutionIdentification
+        morningstarId
+        reserveBankOfIndiaNumber
+        spanishFiscalIdentificationCode
+        standardPoorInstitutionIdentification
+        ukCompanyNumber
+        vpIssuerId
+      }
+      institutionSummary {
+        nameMainLanguage
+        mainLanguage
+        deletionDate
+        reasonForDeletion
+        legalAddress {
+          place
+          domicile
+          postalCode
+          state
+          streetAndHouseNumber
+          url
+        }
+        headofficeAddress {
+          place
+          domicile
+          postalCode
+          state
+          streetAndHouseNumber
+          url
+        }
+        banqueDeFranceCode
+        isBisCentralBankOrMonetaryAuthority
+        ebaSectorCode
+        fitchMarketSector
+        gicsSectorCode
+        industryClassificationBenchmark
+        mfiBranchType
+        mfiSectorType
+        naceSectorCode
+        nafSectorCode
+        orbofSectorCode
+        sixProtide
+        sixSectorCode
+        standardIndustrialClassification
+        balanceSheetCurrency
+        disolutionDate
+        endOfCurrentFinancialYear
+        endOfLastFinancialYear
+        furtherClause
+        investmentFundGuideline
+        legalForm
+        legalFormPeculiarity
+        mifidiiInvestmentFirm
+        centralCounterpartyType
+        centralSecuritiesDepositoryType
+        centralCounterpartyTypeValidFrom
+        centralSecuritiesDepositoryTypeValidFrom
+      }
+    }
+  }
+}
+`
+        }),
+        document.getElementById('graphiql')
+    );
+
+    // add all the widgets that we created to the toolbar
+    widgetCollector.forEach(widget => {
+        document.getElementsByClassName("toolbar")[0].appendChild(widget);
+    })
+
+    function buildText(id, text, size, widgetCollector) {
+        let input = document.createElement("input");
+        input.id = id;
+        input.type = "text";
+        input.size = size;
+        input.disabled = false;
+        input.style.fontSize = "13px";
+        input.style.height = "90%";
+        input.value = text;
+
+        let tooltip = document.createElement("span");
+        tooltip.innerHTML = text;
+        tooltip.classList.add("tooltiptext");
+
+        let container = document.createElement("div");
+        container.style.padding = "3px";
+        container.classList.add("tooltip");
+        container.appendChild(input);
+        container.appendChild(tooltip);
+
+        widgetCollector.push(container);
+        return input;
+    }
+
+</script>
+</body>
+</html>
