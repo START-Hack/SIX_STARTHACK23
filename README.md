@@ -42,6 +42,6 @@ You will be judged on you Creativity, on the Ability for non-financial users to 
 ## <p align="center"> Prize - the winning team members will each receive: </p>
 
 The winning team will get a set of prizes including:
-## a 200 CHF Digitec voucher per person 
-## + an invitation in the Swiss Stock Exchange for a CEO pitch 
-## + a visit to the Swiss Finance Museum
+- 200 CHF Digitec voucher per person 
+- invitation in the Swiss Stock Exchange for a CEO pitch 
+- visit to the Swiss Finance Museum
