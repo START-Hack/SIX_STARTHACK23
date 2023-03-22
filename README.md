@@ -22,7 +22,7 @@ A Front-end/UI that displays content delivered by our API using modern techonolo
 
 ## <p align="center"> The Pitch: </p>
 
-<p align="center"> In the repository </p>
+<p align="center"> https://github.com/START-Hack/SIX_STARTHACK23_INCLUSIVE_FINANCE/blob/main/21032023_START%20Summit_Pitch%20Deck%20for%20Challenge_vf.pptx </p>
 
 ## <p align="center"> Deep Dive Slides: </p>
 
