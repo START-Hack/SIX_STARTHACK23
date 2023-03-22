@@ -26,7 +26,7 @@ A Front-end/UI that displays content delivered by our API using modern techonolo
 
 ## <p align="center"> Deep Dive Slides: </p>
 
-<p align="center"> Insert Deep Dive Slides here </p>
+<p align="center"> The deep dive will be held without a presentation. </p>
 
 ## <p align="center"> Judging Criteria: </p>
 
