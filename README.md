@@ -30,7 +30,10 @@ A Front-end/UI that displays content delivered by our API using modern techonolo
 
 ## <p align="center"> Judging Criteria: </p>
 
-You will be judged on you Creativity, on the Ability for non-financial users to interact with the prototype and on your Design.
+- We want you to define what inclusion in financial services means to you. The greater reach of your solution the better.
+- You will be judged on you Creativity, 
+- On the Ability for non-financial users to interact with the prototype and,
+- On your visual design.
 
 ## <p align="center"> Point of Contact: </p>
 
