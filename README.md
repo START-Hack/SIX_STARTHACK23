@@ -13,6 +13,8 @@ Globally, only 1-in-3 adults are 'financially literate'. Access to financial dat
 To acheive your mission, we grant you access to our brand new financial data API. The API grants you access to data that describe the financial instruments, provide historical data, and prices in streaming mode. A full text search completes the service. The API leverages REST/JSON, GraphQL and websocket technologies.
 
 You can access our API Portal https://bfi-mvp-portal.six-group.com/portal/bfi/
+Sample codes in Javascript and Python are provided.
+A ZIP file contains 10 certificates to connect to the API. The ZIP file password will be provided during the presentation.
 
 ## <p align="center"> Expected Outcome: </p>
 
