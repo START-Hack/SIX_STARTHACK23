@@ -1,11 +1,11 @@
 # ESG Data - Introduction
 
 ESG stands for Environmental, Social and Governance. In this folder you will get 2 CSV files containing ESG data on investment funds from different countries.
-The different ESG aspects of a fund or a company are assess by ESG Factors. An ESG Factor is an evalution criteria. The factors covers diverse aspects such as the gas emission, energy consumptions, exposure to human rights issues, anti-corruptions aspects, genders considerations and many other fascinating other factors.
+The different ESG aspects of a fund or a company are assessed by *ESG Factors*. An ESG Factor is an evalution criteria. ESG factors cover diverse aspects such as the gas emission, energy consumptions, exposure to human rights issues, anti-corruptions, genders considerations and many other topics.
 
 The 2 files **EUESGMANUFACTURER.csv** and **EUESGMANUFACTURER-LIGHT.csv** refers to data known as EET (European ESG Template) specified by the [FinDatex](https://findatex.eu/). You can find further details on the data on the FinDatex website.
 
-The file **EUESGMANUFACTURER.csv** goes up to 600 ESG factors while **EUESGMANUFACTURER-LIGHT.csv** contains about 80 ESG factors that are relevant for the current state of the regulation. Using the light file is an option for you to reduce the scope of your analysis while focusing on the most important ESG Factors. Both file structure are identical so you can start playing with the light version and then check how your project behave with the full version.
+The file **EUESGMANUFACTURER.csv** goes up to 600 ESG factors while **EUESGMANUFACTURER-LIGHT.csv** contains about 80 ESG factors that are relevant for the current state of the regulation. Using the light file is an option for you to reduce the scope of your analysis while focusing on the most important ESG Factors. Both files structures are identical so you can start playing with the light version and then check how your project behave with the full version.
 
 # ESG File Format
 The files **EUESGMANUFACTURER.csv** and **EUESGMANUFACTURER-LIGHT.csv** are in CSV format separated by a coma character.
