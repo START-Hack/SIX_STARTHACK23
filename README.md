@@ -8,42 +8,60 @@
 
 ## <p align="center"> Case Introduction: </p>
 
-Globally, only 1-in-3 adults are 'financially literate'. Access to financial data and financial data insights are often presented in ways that are boring and difficult to interpret for the average user. *Your mission*, find ways to make financial data *easier to interpret, interact, understand and visualize*.
+Data from financial markets is difficult to understand. People are often overwhelmed and ill-equipped to be able to make sense out of the data that might change their financial set up. Investor preferences are changing alongside consumer attitudes to key factors such as social, environmental and governance elements. ESG factors are becoming increasingly relevant not only for financial actors but for citizens of the world who wish to actively participate in change. Solutions in the market currently designed for highly literate users, they require a deep understanding of financial markets plus ESG. 
 
-To acheive your mission, we grant you access to our brand new financial data API. The API grants you access to data that describe the financial instruments, provide historical data, and prices in streaming mode. A full text search completes the service. The API leverages REST/JSON, GraphQL and websocket technologies.
+To acheive your mission, we grant you access to our brand new financial data API: SIX Web API. The API grants you access to data that describe the financial instruments, provide historical data, and prices in streaming mode. The API leverages REST/JSON, GraphQL and websocket technologies.
 
-You can access our API Portal https://bfi-mvp-portal.six-group.com/portal/bfi/
+
+
+You can access:
+Official ESG Data on more than 5000 investment funds.
+Navigate in ESG folder for further details.
+
+Our [API Portal](https://web.apiportal.six-group.com/portal/bfi/)
 Sample codes in Javascript and Python are provided.
-A ZIP file contains 10 certificates to connect to the API. The ZIP file password will be provided during the presentation.
+Navigate in the SIX Web Folder for more information.
+
+Azure OpenAI accounts
+In case you want to innove with Microsoft Azure OpenAI, you can get an account.
+Navigate in AzureOpenAI folder for more information.
 
 ## <p align="center"> Expected Outcome: </p>
 
-A Front-end/UI that displays content delivered by our API using modern techonologies. Ideally a working prototype is expected but a mock up is also acceptable.
+- A creative solution to making financial data accessible and that can assist users in decision making.
+- Decision making can be anything from optimising a portfolio of investments, discovering new opportunities or making the world of finance more accessible to lower the barriers to access investment opportunities. 
+- We expect a prototype solution that uses the data sets provided in creative ways
+- A solution could be through visualization tools to illustrate the impact of social and environmental (ESG) investments of financial institutions and also help investors decide where to allocate their capital
+
 
 ## <p align="center"> The Pitch: </p>
-
-<p align="center"> https://github.com/START-Hack/SIX_STARTHACK23_INCLUSIVE_FINANCE/blob/main/21032023_START%20Summit_Pitch%20Deck%20for%20Challenge_vf.pptx </p>
+[Link to the video pitch](https://github.com/START-Hack/SIX_STARTHACK23/blob/main/459_HackPitch.compressed.mp4)
 
 ## <p align="center"> Deep Dive Slides: </p>
 
 <p align="center"> The deep dive will be held without a presentation. </p>
 
-## <p align="center"> DATA PASSWORT PROTECTION: </p>
-
-<p align="center"> The passwort for the .zip file is: "hackaton2023". </p>
-
 ## <p align="center"> Judging Criteria: </p>
 
-- We want you to define what inclusion in financial services means to you. The greater reach of your solution the better.
-- You will be judged on you Creativity, 
-- On the Ability for non-financial users to interact with the prototype and,
-- On your visual design.
+- Creativity (50%)
+  - We are not looking for “boring corporate reports” with labels and value or basic widget representations but for new ideas to display information.
+  - The concept to display, navigate and discover the information is intuitive.
+-	Visual design (20%)
+  - Ease of understanding of the information.
+  - Displayed information are easy to read and to scan.
+  - The visual design is attractive and fun
+- Feasibility (10%)
+  - How easily the solution can be integrated in a web site
+- OTHER CRITERIA (20%)
+  - Note sure this criterion is still relevant: Target audience clearly articulated 
+  - Solution adequately tailored to customer needs identified
+
 
 ## <p align="center"> Point of Contact: </p>
 
-<p align="center"> Laurent Lefevre and Catalina Vazquez will be glad to answer your questions during the Deep Dive. </p>
+<p align="center"> Jacob Gertel, Laurent Lefevre and Catalina Vazquez will be glad to answer your questions during the Deep Dive. </p>
 
-<p align="center"> David De Lame (Product Manager), Lukas Maag (Business Analyst), Manuel Niederberger (Business Analyst) and Davide Angelocola (Tech Lead) will also be available for your questions (Thursday on site)</p>
+<p align="center"> David De Lame (Product Manager), Manuel Niederberger (Business Analyst) and Amelie Roth (Dev) will also be available for your questions (Thursday on site)</p>
 
 
 ## <p align="center"> Prize - the winning team members will each receive: </p>
@@ -51,4 +69,3 @@ A Front-end/UI that displays content delivered by our API using modern techonolo
 The winning team will get a set of prizes including:
 - 200 CHF Digitec voucher per person 
 - invitation in the Swiss Stock Exchange for a CEO pitch 
-- visit to the Swiss Finance Museum
